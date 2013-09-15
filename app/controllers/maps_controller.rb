@@ -1,9 +1,6 @@
 class MapsController < ApplicationController
   def index
-    #return array of companies info
-  end
-
-  def get_position
-    #binding.pry
+    #return list of stores that want to show in map
+    @stores = Store.all
   end
 end

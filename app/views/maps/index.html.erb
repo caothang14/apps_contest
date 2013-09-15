@@ -1,47 +1,64 @@
-<!DOCTYPE html>
-<html> 
-<head> 
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-  <title>Apps Contest</title> 
-  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head> 
-<body>
-  <div id="map" style="width: 1000px; height: 600px;"></div>
-  <a href="maps/get_position" target="_blank">Create your own store? Click here</a>
-</body>
+<div id="map" style="width: 1000px; height: 600px;"></div>
+<a href="stores/new" target="_blank">Create your own store? Click here</a>
+
+<%= javascript_tag do %>
+  window.stores = <%=raw @stores.to_json %>;
+<% end %>
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 <script type="text/javascript">
-    var locations = [
-      ["Sieu Thi<br><a href='http://google.com.vn' target='_blank'>FPT Shop</a>", 20.995754571583674, 105.84969959259035, 4],
-      ["Nha cua Linh<br><a href='http://google.com.vn' target='_blank'>FPT Shop</a>'", 20.99121702155043, 105.85087341690064, 5],
-      ['Bach Khoa Ha Noi', 21.006001115966832, 105.84297529459002, 3],
-      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-      ['Maroubra Beach', -33.950198, 151.259302, 1]
-    ];
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(21.005550403,  105.850),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+  //initialize map
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: new google.maps.LatLng(21.006550403, 105.850),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  //set center map to client position
+  var client_pos;
+  if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(setClientPosition,handleError);
+  }
+  function setClientPosition(position){
+    client_pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    map.panTo(client_pos);
+    var marker;
+    marker = new google.maps.Marker({
+      position: client_pos,
+      title: "your position",
+      map: map
     });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        title: locations[i][0],
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
+  }
+  function handleError(error){
+    switch(error.code){
+      case error.PERMISSION_DENIED:
+        console.log("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.log("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        console.log("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.log("An unknown error occurred.");
+        break;
     }
-  </script>
-</html>
+  }
+  //display stores
+  var infowindow = new google.maps.InfoWindow();
+  var marker, i;
+  for (i = 0; i < stores.length; i++) {  
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(stores[i].pos_x, stores[i].pos_y),
+      title: stores[i].name,
+      map: map
+    });
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        popup_content = 
+          "<b>"+stores[i].name+"</b><br><p>"+stores[i].address+"</p><a href='http:\/\/google.com.vn' target='_blank'>View this location</a>";
+        infowindow.setContent(popup_content);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
+</script>

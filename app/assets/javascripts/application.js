@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//"=" require turbolinks /bo dau "" de su dung turbolinks
 //= require_tree .
