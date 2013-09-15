@@ -1,7 +1,7 @@
 AppsContest::Application.routes.draw do
+  resources :stores
+
   root "maps#index"
-  get "maps/index"
-  get "maps/get_position"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
