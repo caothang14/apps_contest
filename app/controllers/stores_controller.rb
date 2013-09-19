@@ -1,5 +1,7 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :check_logged_in?, only: [:new, :edit, :update, :destroy]
+  before_action :check_store_owner, only: [:edit, :update, :destroy]
 
   # GET /stores
   # GET /stores.json
@@ -14,7 +16,7 @@ class StoresController < ApplicationController
 
   # GET /stores/new
   def new
-    @store = Store.new
+    @store = current_user.stores.new
   end
 
   # GET /stores/1/edit
@@ -24,7 +26,7 @@ class StoresController < ApplicationController
   # POST /stores
   # POST /stores.json
   def create
-    @store = Store.new(store_params)
+    @store = current_user.stores.new(store_params)
 
     respond_to do |format|
       if @store.save
@@ -65,6 +67,11 @@ class StoresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_store
       @store = Store.find(params[:id])
+    end
+
+    #redirect if current_user don't own this store
+    def check_store_owner
+      redirect_to root_path unless current_user.own_store? @store
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
