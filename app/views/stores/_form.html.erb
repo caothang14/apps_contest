@@ -23,12 +23,20 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
   </div>
   <div class="field">
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
+    <%= f.label :working_hours %><br>
+    <%= f.text_field :working_hours %>
+  </div>  
+  <div class="field">
+    <%= f.label :homepage %><br>
+    <%= f.text_field :homepage %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <b>Drag the marker to your store's location!</b>
   <div class="field">
@@ -51,8 +59,8 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <style>
   #mapCanvas {
-    width: 800px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     float: left;
   }
 </style>

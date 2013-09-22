@@ -43,9 +43,9 @@
       <h2><%= @store.name %></h2>
       <ul>
         <li><img src="/images/location.png"><%= @store.address %></li>
-        <li><img src="/images/phone.png">(04) 3628.6666</li>
-        <li><img src="/images/working-hours.png">8h - 22h</li>
-        <li><img src="/images/homepage.png"><a href="#">www.fptshop.com.vn</a></li>
+        <li><img src="/images/phone.png"><%= @store.phone_number %></li>
+        <li><img src="/images/working-hours.png"><%= @store.working_hours %></li>
+        <li><img src="/images/homepage.png"><a href="#"><%= @store.homepage %></a></li>
       </ul>
       <p><%= @store.description %></p>
     </div>
