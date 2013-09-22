@@ -1,34 +1,156 @@
-<p id="notice"><%= notice %></p>
+<div class="wrap">
+  <div id="nav">
+    <ul id="nav-menu">
+      <li class="active"><a href="#">Store</a></li>
+      <li><a href="#">Promotion</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <ul class="user-action">
+      <li class="active"><a href="#"><img src="/images/like.png">Liked</a></li>
+      <li class="active"><a href="#"><img src="/images/follow.png">Following</a></li>
+      <li><a href="#"><img src="/images/report.png">Report</a></li>
+    </ul>
+  </div>
+  <div id="search">
+    <input type="text" class="search-box" placeholder="Search for something here...">
+    <div class="category-select">
+      <select>
+            <option>Select an option</option>
+            <option>Am thuc</option>
+            <option>Dien May</option>
+            <option>Via He</option>
+            <option>Gia dung</option>
+        </select>
+    </div>  
+      <div class="share-button">
+        <a href="#" 
+        onclick="
+          window.open(
+            'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+            'facebook-share-dialog', 
+            'width=626,height=436'); 
+          return false;">
 
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
+          <img src="/images/facebook_share.png" style="vertical-align:middle; height:45px;">
+      </a>
+      </div>
+  </div>
+  <div id="feature">
+    <div id="slide-image">
+      <img src="http://tapchimonngon.com/images/stories/untitled-2-2.jpg" style="height:100%">
+    </div>
+    <div id="store-info">
+      <h2><%= @store.name %></h2>
+      <ul>
+        <li><img src="/images/location.png"><%= @store.address %></li>
+        <li><img src="/images/phone.png">(04) 3628.6666</li>
+        <li><img src="/images/working-hours.png">8h - 22h</li>
+        <li><img src="/images/homepage.png"><a href="#">www.fptshop.com.vn</a></li>
+      </ul>
+      <p><%= @store.description %></p>
+    </div>
+  </div>
+  <div id="container">
+    <div id="main">
+      <h2 class="slogan">Sologan hay cai gi do o day coi nhu la tieu de</h2>
+      <div id="content" class="des-info">
+        <p>Nổi tiếng từ những năm 90, <strong>Ciao café</strong> tại địa chỉ 74 Nguyễn Huệ là điểm hẹn quen thuộc của người dân sành café Sài Gòn, giới văn nghệ sĩ cũng như người nước ngoài.<br>
+          &nbsp;</p>
+        <p><strong>Ciao Café Nguyễn Huệ</strong> tọa lạc trên con đường trung tâm sầm uất, náo nhiệt vào bậc nhất của Sài Gòn, nhưng khi vừa mở cửa bước vào quán, bạn sẽ cảm thấy trái ngược hoàn toàn: không xô bồ, ồn ào như khung cảnh bên ngoài, không gian bên trong quán cho ta cảm giác như lạc vào một thế giới khác trầm mặc, yên tĩnh hơn rất nhiều.<br>
+          &nbsp;</p>
+        <p><img alt="CIAO CAFE NGUYEN HUE" src="http://images.muachungdeals.net/Upload/20083/PR/CIAO-CAFE-NGUYEN-HUE_2013911102331515.jpg"><br>
+          <br>
+          <img alt="CIAO CAFE NGUYEN HUE" src="http://images.muachungdeals.net/Upload/20083/PR/CIAO-CAFE-NGUYEN-HUE_2013911102240269.jpg"></p>
+        <p><br>
+          Tầng trệt và tầng lửng của quán được trang trí thân thiện như câu chào “ciao” của người Ý với những viên gạch màu sắc ốp sát trần hay cho ta cảm giác như quay lại Sài Gòn những năm thập niên 90 với nền nhà được lát những viên gạch hoa văn cổ xưa cùng những bộ bàn ghê nâu bóng ấm cúng.<br>
+          &nbsp;</p>
+        <p>
+          <img alt="CIAO CAFE NGUYEN HUE" src="http://images.muachungdeals.net/Upload/20083/PR/CIAO-CAFE-NGUYEN-HUE_2013911102358488.jpg"><br>
+          <br>
+          <br>
+          &nbsp;</p>
+        <p>
+          Trong khi đó, lầu 1 được thiết kế theo phong cách lounge sang trọng và nồng nàn. Những bộ bàn ghế với kiểu dáng cầu kỳ, cổ điển kết hợp với tông màu nâu trầm, đỏ ấm của không gian khiến cho bạn như bước vào tòa lâu đài sang trọng, quý phái của hoàng tử, công chúa ngày xưa.<br>
+          &nbsp;</p>
+      </div>
+      <div class="facebook"  style="margin:auto; width:580px;">
+        <div class="fb-comments" data-href="http://www.place.vn/dia-diem/nha-hang-sen-nam-thanh-85" data-width="580"></div>
+      </div>
+    </div>
+    <div id="side-bar">
+      <div id="small-map">
+        <!-- insert &amp;iwloc=near at end of src attributes in ifram to remove info window-->
+        <iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=vi&amp;geocode=&amp;q=B%C3%A1ch+Khoa,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam&amp;aq=0&amp;oq=bach+khoa&amp;sll=20.99557,105.848293&amp;sspn=0.022717,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=B%C3%A1ch+Khoa,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam&amp;t=m&amp;ll=21.002792,105.847692&amp;spn=0.024039,0.025663&amp;z=14&amp;output=embed&amp;iwloc=near"></iframe><br />
 
-<p>
-  <strong>Address:</strong>
-  <%= @store.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @store.description %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @store.note %>
-</p>
-
-<p>
-  <strong>Pos x:</strong>
-  <%= @store.pos_x %>
-</p>
-
-<p>
-  <strong>Pos y:</strong>
-  <%= @store.pos_y %>
-</p>
-
+        <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=vi&amp;geocode=&amp;q=B%C3%A1ch+Khoa,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam&amp;aq=0&amp;oq=bach+khoa&amp;sll=20.99557,105.848293&amp;sspn=0.022717,0.042272&amp;ie=UTF8&amp;hq=&amp;hnear=B%C3%A1ch+Khoa,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam&amp;t=m&amp;ll=21.002792,105.847692&amp;spn=0.024039,0.025663&amp;z=14">Xem Bản đồ cỡ lớn hơn</a></small>
+      </div>
+      <hr>
+      <div class="slide-box">
+        <span class="box-title">RECOMMENDED STORES</span>
+        <div class="box-content">
+          <ul class="recommended-items">
+            <li>
+              <img src="http://i.place.vn/Content/images/places/86/sen-tay-ho-1_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">Nhà hàng Sen Tây Hồ</a></span>
+                <p class="item-address">
+                  614 Lạc Long Quân (khuôn viên Công viên nước Hồ Tây) - Tây Hồ - Hà Nội
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="http://i.place.vn/Content/images/places/92/sen%20ha%20thanh_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">Nhà hàng Sen Hà Thành</a></span>
+                <p class="item-address">
+                  177 Bùi Thị Xuân (sau tòa nhà Vincom) - Hai Bà Trưng - Hà Nội
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="http://i.place.vn/Content/images/places/292/sumo-bbq-2_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">SumoBBQ - Hoàng Quốc Việt</a></span>
+                <p class="item-address">
+                  132 – 134 Hoàng Quốc Việt - Cầu Giấy - Hà Nội
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="http://i.place.vn/Content/images/places/66308/539678-325794627511459-78467733-n_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">Outdoor Club</a></span>
+                <p class="item-address">
+                  Ngõ 200 Âu Cơ - Tây Hồ - Hà Nội
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="http://i.place.vn/Content/images/places/86/sen-tay-ho-1_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">Công ty Cổ phần Bán lẻ Kỹ thuật số FPT</a></span>
+                <p class="item-address">
+                  614 Lạc Long Quân (khuôn viên Công viên nước Hồ Tây) - Tây Hồ - Hà Nội
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="http://i.place.vn/Content/images/places/21950/sac-phong-nhan-vien_small.jpg">
+              <div class="item-info">
+                <span class="item-title"><a href="#">Nhà hàng 1946 - Mai Anh Tuấn</a></span>
+                <p class="item-address">
+                  Biệt thự số 50 phố Mai Anh Tuấn - bờ hồ Hoàng Cầu - Đống Đa - Hà Nội
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      Comment review dat o dau. Hay la dat sang mot tab moi
+      
+    </div>
+  </div>
+  <div id="footer"></div>
+</div>
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

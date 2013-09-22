@@ -1,69 +1,80 @@
-<style type="text/css">
-  html, body {
-    margin: 0 auto;
-  font-family: Arial,Helvetica,sans-serif;
-  color: #555;
-  font-size: 13px;
-  height: 100%;
-  background: #f5f5f5;
-  }
-  #wrapper{
-    height: 100%;
-  }
-  #header{
-    padding: 20px 20px 0;
-  border-bottom: #ccc solid 1px;
-  -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.5);
-  -moz-box-shadow: 0 1px 10px rgba(0,0,0,.5);
-  box-shadow: 0 1px 10px rgba(0,0,0,.5);
-  z-index: 999;
-  position: relative;
-  background-color: #fff;
-  min-height: 68px;
-  }
-  #left-panel{
-    top: 90px;
-    position: absolute;
-  z-index: 888!important;
-  left: 0;
-  bottom: 0;
-  padding: 0;
-  width: 360px;
-  background: #fff
-  }
-  #map-area{
-    background-color: rgb(229, 227, 223);
-  overflow: hidden;
-  top: 90px;
-  position: absolute!important;
-  left: 360px;
-  right: 0;
-  bottom: 0;
-  }
-  #scroll-left-panel{
-    height: 100%;
-  overflow-y: auto;
-  background: red;
-  }
-  #map-canvas{
-    position: absolute;
-  left: 0px;
-  top: 0px;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  }
-</style>
 <div id="wrapper">
   <div id="header">
-    <a href="stores/new" target="_blank">Create your own store? Click here</a>
+    <div class="logo">
+      <a href="/">
+        <img src="images/logo.png">
+        <span>Discount Map</span>
+      </a>
+    </div>
+    <div id="user-board">
+      <ul class="user-panel">
+        <% if current_user %>
+          <li class="user-name"><%= current_user.name%></li>
+          <li><button id="notifications"><span class="yt-uix-button-content">30</span></button></li>
+          <li><a href="#">
+            <img class="avatar" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1119702_100000499350811_524158945_q.jpg">
+          </a></li>
+          <li><a href="/signout">
+            <img src="/images/settings.png" class="settings">
+          </a></li>
+        <% else %>
+          <li class="user-name"><%= link_to "Login", "/auth/facebook/" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="search">
+      <input type="text" class="search-box" placeholder="Search for something here...">
+      <div class="category-select">
+        <select>
+              <option>Select an option</option>
+              <option>Am thuc</option>
+              <option>Dien May</option>
+              <option>Via He</option>
+              <option>Gia dung</option>
+          </select>
+      </div>
+    </div>
   </div>
   <div id="left-panel">
     <div id="scroll-left-panel">
-      some contentTại Nhật Bản, trung thu được gọi là Tsukimi hay Otsukimi, nghĩa là “ngắm trăng”. Người ta quây quần bên nhau ngồi ngắm vẻ đẹp hoàn mỹ của vầng trăng và làm thơ. Người Nhật không ăn bánh Trung thu trong lúc ngắm trăng, mà thay vào đó là món bánh gạo nếp. 
-
-      Vì rằm tháng 8 cũng là lúc thu hoạch của các loại cây trồng, nên người Nhật cũng tổ chức các nghi lễ để cảm tạ sự ưu ái của thiên nhiên. Mặc dù lịch âm đã không được sử dụng từ sau cải cách Minh Trị, nhưng hiện nay người Nhật Bản vẫn giữ được thói quen đón Trung thu. Một số đền, chùa ở Nhật Bản cũng tổ chức lễ hội Trung thu theo truyền thống
+    <ul class="recommended-items">
+      <li>
+        <img src="http://i.place.vn/Content/images/places/86/sen-tay-ho-1_small.jpg">
+        <div class="item-info">
+          <span class="item-title"><a href="#">Nhà hàng Sen Tây Hồ</a></span>
+          <p class="item-address">
+            614 Lạc Long Quân (khuôn viên Công viên nước Hồ Tây) - Tây Hồ - Hà Nội
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="http://i.place.vn/Content/images/places/92/sen%20ha%20thanh_small.jpg">
+        <div class="item-info">
+          <span class="item-title"><a href="#">Nhà hàng Sen Hà Thành</a></span>
+          <p class="item-address">
+            177 Bùi Thị Xuân (sau tòa nhà Vincom) - Hai Bà Trưng - Hà Nội
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="http://i.place.vn/Content/images/places/292/sumo-bbq-2_small.jpg">
+        <div class="item-info">
+          <span class="item-title"><a href="#">SumoBBQ - Hoàng Quốc Việt</a></span>
+          <p class="item-address">
+            132 – 134 Hoàng Quốc Việt - Cầu Giấy - Hà Nội
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="http://i.place.vn/Content/images/places/66308/539678-325794627511459-78467733-n_small.jpg">
+        <div class="item-info">
+          <span class="item-title"><a href="#">Outdoor Club</a></span>
+          <p class="item-address">
+            Ngõ 200 Âu Cơ - Tây Hồ - Hà Nội
+          </p>
+        </div>
+      </li>
+    </ul>
     </div>
   </div>
   <div id="map-area">
@@ -126,7 +137,7 @@
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
         popup_content = 
-          "<b>"+stores[i].name+"</b><br><p>"+stores[i].address+"</p><a href='http:\/\/google.com.vn' target='_blank'>View this location</a>";
+          "<b>"+stores[i].name+"</b><br><p>"+stores[i].address+"</p><a href='\/stores\/"+stores[i].id+"'' target='_blank'>View this location</a>";
         infowindow.setContent(popup_content);
         infowindow.open(map, marker);
       }
