@@ -1,0 +1,49 @@
+<%= form_for(@promotion) do |f| %>
+  <% if @promotion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
+
+      <ul>
+      <% @promotion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <script>
+    jQuery(document).ready(function() {
+    jQuery('.datepicker').datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate   : 0
+      });
+    });
+  </script>
+  <div class="field">
+    <%= f.label :begin_date %><br>
+    <%= f.text_field :begin_date, :class => 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.text_field :end_date, :class => 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.select(:status,"pending" => "pending", "public" => "public" , "banned" => "banned") %>
+  </div>
+  <div class="field">
+    <%= f.label :Store %><br>
+    <%= f.collection_select(:store_id, Store.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :Category %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
