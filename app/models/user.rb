@@ -16,14 +16,6 @@ class User < ActiveRecord::Base
 	  end
 	end
 
-	def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def User.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
 	def own_store? store
 		self.id == store.user_id
 	end
