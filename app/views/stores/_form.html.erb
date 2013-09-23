@@ -1,6 +1,6 @@
+<hr>
 <input id="begin_pos_x" type="hidden" value="<%= @store.pos_x || 21.005358985589186%>">
 <input id="begin_pos_y" type="hidden" value="<%= @store.pos_y || 105.83716351318367%>">
-<div id="mapCanvas"></div>
 <%= form_for(@store) do |f| %>
   <% if @store.errors.any? %>
     <div id="error_explanation">
@@ -13,55 +13,65 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="top-board">
+    <div class="basic-info">
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :address %><br>
+        <%= f.text_field :address %>
+      </div>
+      <div class="field">
+        <%= f.label :phone_number %><br>
+        <%= f.text_field :phone_number %>
+      </div>
+      <div class="field">
+        <%= f.label :working_hours %><br>
+        <%= f.text_field :working_hours %>
+      </div>  
+      <div class="field">
+        <%= f.label :homepage %><br>
+        <%= f.text_field :homepage %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    
+    <div class="map-area">
+      <b>Drag the marker to your store's location!</b>
+      <div id="mapCanvas"></div>
+      <div class="field hide">
+        <%= f.label :pos_x %><br>
+        <%= f.text_field :pos_x, id: "pos_x", readonly: true %>
+      </div>
+      <div class="field hide">
+        <%= f.label :pos_y %><br>
+        <%= f.text_field :pos_y, id: "pos_y", readonly: true %>
+      </div>
+      <div id="infoPanel">
+        <b>Closest matching address:</b>
+        <div id="address"></div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :working_hours %><br>
-    <%= f.text_field :working_hours %>
-  </div>  
-  <div class="field">
-    <%= f.label :homepage %><br>
-    <%= f.text_field :homepage %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <b>Drag the marker to your store's location!</b>
-  <div class="field">
-    <%= f.label :pos_x %><br>
-    <%= f.text_field :pos_x, id: "pos_x", readonly: true %>
-  </div>
-  <div class="field">
-    <%= f.label :pos_y %><br>
-    <%= f.text_field :pos_y, id: "pos_y", readonly: true %>
-  </div>
-  <div id="infoPanel">
-    <b>Closest matching address:</b>
-    <div id="address"></div>
+  <hr>
+  <div class="detail-info">
+    <span>Edit your introduce article:</span>
+    <%= f.cktext_area :note, :class => "", :ckeditor => {:language => "en",:uiColor => "#8d8d8d", :toolbar => "mini", :height => 500} %>  
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <style>
   #mapCanvas {
-    width: 400px;
+    width: 100%;
     height: 400px;
-    float: left;
   }
 </style>
 <script type="text/javascript">

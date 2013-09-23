@@ -10,6 +10,9 @@ a{
   color: #f26c4f;
   text-decoration: none;
 }
+.hide{
+  display: none;
+}
 #container a:hover{
   text-decoration: underline;
 }
@@ -17,6 +20,7 @@ img{
   vertical-align:middle;
 }
 hr{
+  clear: both;
   color: #8f8f8f;
   margin: 15px 2px 15px;
 }
@@ -259,7 +263,8 @@ hr{
   margin-top: 10px;
 }
 #content img{
-  width: 100%;
+  width: 100% !important;
+  height: auto !important;
 }
 #side-bar{
   width: 300px;
@@ -302,4 +307,34 @@ hr{
 }
 .recommended-items .item-address{
   text-align: justify;
+}
+.top-board{
+}
+.basic-info{
+  width: 440px;
+  float: right;
+}
+.map-area{
+  width: 450px;
+}
+.detail-info{
+  clear: both;
+}
+textarea{
+  width: 415px;
+  height: 120px;
+  border: 0px;
+  font-size: 14px;
+  color: #a5a5a5;background: white;
+  padding: 10px;
+}
+input[type=text]{
+  border: 0px;
+  width: 415px;
+  height: 45px;
+  font-size: 14px;
+  color: #a5a5a5;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //"=" require turbolinks /bo dau "" de su dung turbolinks
 //= require_tree .
+//= require ckeditor/init
+//= require ckeditor/config

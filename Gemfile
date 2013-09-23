@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'pry'
 gem 'omniauth-facebook'
 gem 'fb_graph'
+gem 'ckeditor'
+gem 'paperclip'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

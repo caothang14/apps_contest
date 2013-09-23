@@ -1,4 +1,5 @@
 AppsContest::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :stores
 
   root "maps#index"
