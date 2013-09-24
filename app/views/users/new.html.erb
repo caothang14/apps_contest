@@ -4,6 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
+    <%= f.hidden_field :provider, :value => "phone"%>
       <div class="field">
         <%= f.label :phone_number %><br>
         <%= f.text_field :phone_number %>

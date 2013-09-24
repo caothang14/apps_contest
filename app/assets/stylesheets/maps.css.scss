@@ -14,7 +14,12 @@ body{
   color: #f26c4f;
   text-decoration: none;
 }
+a{
+  color: #f26c4f;
+  text-decoration: none;
+}
 a:hover{
+  color: #f26c4f;
   text-decoration: underline;
 }
 img{
@@ -39,6 +44,9 @@ hr{
 }
 .logo img{
   height: 65px;
+}
+.logo a:hover{
+  text-decoration: none;
 }
 .logo span{
   color: #ffffff;
@@ -87,9 +95,6 @@ hr{
   height: 20px;
   width: 20px;
   vertical-align: middle;
-}
-.user-panel a:hover{
-  color: #373737;
 }
 #search{
   width: 560px;

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :stores
 
-	validates :phone_number, uniqueness: true
+	validates :phone_number, uniqueness: {:scope => :uid}
 
 	has_secure_password :validations => false
 	validates :password, length: { minimum: 6 }, :if => :check_phone_number

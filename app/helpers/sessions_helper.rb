@@ -22,6 +22,6 @@ module SessionsHelper
   end
 
   def check_logged_in?
-    redirect_to '/auth/facebook' and return unless current_user
+    redirect_to '/signin' and return unless current_user
   end
 end

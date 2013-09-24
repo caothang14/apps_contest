@@ -12,26 +12,25 @@
           <li class="user-name"><%= current_user.name%></li>
           <li><button id="notifications"><span class="yt-uix-button-content">30</span></button></li>
           <li><a href="#">
-            <img class="avatar" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1119702_100000499350811_524158945_q.jpg">
+            <% if current_user.provider=="facebook" %>
+              <img class="avatar" src="http://graph.facebook.com/<%=current_user.uid%>/picture">
+            <% else %>
+              <img class="avatar" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png">
+            <%end%>
           </a></li>
           <li><a href="/signout">
             <img src="/images/settings.png" class="settings">
           </a></li>
         <% else %>
           <li class="user-name"><%= link_to "Login", "/signin" %></li>
-        <% end %>
+        <% end %><br>
+        <%= link_to "Create your own store!", new_store_path %>
       </ul>
     </div>
     <div id="search">
       <input type="text" class="search-box" placeholder="Search for something here...">
       <div class="category-select">
-        <select>
-              <option>Select an option</option>
-              <option>Am thuc</option>
-              <option>Dien May</option>
-              <option>Via He</option>
-              <option>Gia dung</option>
-          </select>
+        <%=collection_select(:search_params, :category, Category.all, :id, :name) %>
       </div>
     </div>
   </div>
@@ -137,7 +136,7 @@
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
         popup_content = 
-          "<b>"+stores[i].name+"</b><br><p>"+stores[i].address+"</p><a href='\/stores\/"+stores[i].id+"'' target='_blank'>View this location</a>";
+          "<b>"+stores[i].name+"</b><br><p>"+stores[i].address+"</p><a href='\/stores\/"+stores[i].id+"'>View this location</a>";
         infowindow.setContent(popup_content);
         infowindow.open(map, marker);
       }
