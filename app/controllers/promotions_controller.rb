@@ -1,5 +1,6 @@
 class PromotionsController < ApplicationController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action :convert_tags, only: [:edit]
 
   # GET /promotions
   # GET /promotions.json
@@ -64,6 +65,10 @@ class PromotionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_promotion
       @promotion = Promotion.find(params[:id])
+    end
+
+    def convert_tags
+      @promotion.tags = @promotion.convert_tags_to_string
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
