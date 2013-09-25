@@ -22,12 +22,12 @@
 
 <p>
   <strong>Store:</strong>
-  <%= @promotion.store.name %>
+  <%= @promotion.store.try(:name) %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @promotion.category.name %>
+  <%= @promotion.category.try(:name) %>
 </p>
 <%= link_to 'Edit', edit_promotion_path(@promotion) %> |
 <%= link_to 'Back', promotions_path %>

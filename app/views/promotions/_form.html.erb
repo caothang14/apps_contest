@@ -32,6 +32,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
     <%= f.label :status %><br>
     <%= f.select(:status,"pending" => "pending", "public" => "public" , "banned" => "banned") %>
   </div>
